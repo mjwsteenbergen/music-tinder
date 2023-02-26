@@ -52,7 +52,7 @@ const Display = ({ currentSong, feedback, done }: DisplayProps) => {
   return <div className='md:max-w-xl'>
     <div>
       <img className='max-w-full w-full' src={currentSong.image} />
-      <h1 className='text-5xl p-4 pb-1 pl-0 max-w-full font-serif'>{currentSong.name}</h1>
+      <h1 className='text-5xl p-4 pb-1 pl-0 max-w-full font-serif font-bold'>{currentSong.name}</h1>
       <h2 className='text-3xl p-3 pl-0 max-w-full font-serif'>{currentSong.artist}</h2>
     </div>
     <div className="grid grid-cols-2 gap-4 mt-10">
