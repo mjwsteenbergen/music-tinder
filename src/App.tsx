@@ -49,16 +49,16 @@ type DisplayProps = {
 }
 
 const Display = ({ currentSong, feedback, done }: DisplayProps) => {
-  return <div className='md:max-w-xl'>
+  return <div className='md:max-w-sm 3xl:max-w-lg'>
     <div>
       <img className='max-w-full w-full' src={currentSong.image} />
-      <h1 className='text-5xl p-4 pb-1 pl-0 max-w-full font-serif font-bold'>{currentSong.name}</h1>
-      <h2 className='text-3xl p-3 pl-0 max-w-full font-serif'>{currentSong.artist}</h2>
+      <h1 className='text-3xl p-2 pb-1 pl-0 max-w-full font-serif font-bold'>{currentSong.name}</h1>
+      <h2 className='text-xl p-1 pl-0 max-w-full font-serif'>{currentSong.artist}</h2>
     </div>
     <div className="grid grid-cols-2 gap-4 mt-10">
-      <button className='bg-gray-100 hover:bg-gray-400 p-5 rounded-md font-bold' onClick={() => { feedback(currentSong.id, 'positive') }}>Like</button>
-      <button className='bg-gray-100 hover:bg-gray-400 p-5 rounded-md font-bold' onClick={() => { feedback(currentSong.id, 'negative') }}>Dislike</button>
-      <button className='bg-gray-100 hover:bg-gray-400 p-5 rounded-md font-bold col-span-2' onClick={() => { done() }}>Submit</button>
+      <button className='bg-gray-100 hover:bg-gray-400 p-4 rounded-md text-sm font-bold' onClick={() => { feedback(currentSong.id, 'positive') }}>Like</button>
+      <button className='bg-gray-100 hover:bg-gray-400 p-4 rounded-md text-sm font-bold' onClick={() => { feedback(currentSong.id, 'negative') }}>Dislike</button>
+      <button className='bg-gray-100 hover:bg-gray-400 p-4 rounded-md text-sm font-bold col-span-2' onClick={() => { done() }}>Submit</button>
     </div>
   </div>
 }
