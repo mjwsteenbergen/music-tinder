@@ -1,10 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import {App2} from './App'
-import './index2.css'
+import {App, AppWrapper} from './App'
+import './index.css'
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+ReactDOM.createRoot(document.getElementsByTagName('body')[0] as HTMLElement).render(
   <React.StrictMode>
-    <App2 />
+    <AppWrapper>
+      <App/>
+    </AppWrapper>
   </React.StrictMode>,
 )

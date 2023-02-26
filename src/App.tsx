@@ -1,15 +1,19 @@
-import { useEffect, useState } from 'react'
-import './App2.css'
+import { PropsWithChildren, useEffect, useState } from 'react'
 import { FeedbackOp, Samaritan, Song } from './samaritan';
-import Spotify from 'spotify-web-api-js';
 
-export const App2 = () => {
-  const [item, setItem] = useState<Song|undefined>(undefined);
+export const AppWrapper = ({ children }: PropsWithChildren<{}>) => {
+  return <div className='w-screen h-screen flex justify-center items-center p-5'>
+    {children}
+  </div>
+} 
+
+export const App = () => {
+  const [item, setItem] = useState<Song | undefined>(undefined);
   const [done, isDone] = useState(false);
   const samaritan = new Samaritan()
 
 
-  const onFeedback: DisplayProps['feedback'] = (song, feedback) => { 
+  const onFeedback: DisplayProps['feedback'] = (song, feedback) => {
     samaritan.sendFeedback({
       feedback,
       id: song
@@ -36,7 +40,7 @@ export const App2 = () => {
   }
 
   return <div><h1>waiting for data</h1></div>;
-} 
+}
 
 type DisplayProps = {
   currentSong: Song;
@@ -45,16 +49,16 @@ type DisplayProps = {
 }
 
 const Display = ({ currentSong, feedback, done }: DisplayProps) => {
-  return <div>
-    <div id="display">
-      <img id="album-cover" src={currentSong.image} />
-      <h1>{currentSong.name}</h1>
-      <h2>{currentSong.artist}</h2>
+  return <div className='md:max-w-xl'>
+    <div>
+      <img className='max-w-full w-full' src={currentSong.image} />
+      <h1 className='text-5xl p-4 pb-1 pl-0 max-w-full font-serif'>{currentSong.name}</h1>
+      <h2 className='text-3xl p-3 pl-0 max-w-full font-serif'>{currentSong.artist}</h2>
     </div>
-    <div id="button-holder">
-      <button id="positive" onClick={() => { feedback(currentSong.id, 'positive') }}>Like</button>
-      <button id="negative" onClick={() => { feedback(currentSong.id, 'negative') }}>Dislike</button>
-      <button id="submit" onClick={() => { done() }}>Submit</button>
+    <div className="grid grid-cols-2 gap-4 mt-10">
+      <button className='bg-gray-100 hover:bg-gray-400 p-5 rounded-md font-bold' onClick={() => { feedback(currentSong.id, 'positive') }}>Like</button>
+      <button className='bg-gray-100 hover:bg-gray-400 p-5 rounded-md font-bold' onClick={() => { feedback(currentSong.id, 'negative') }}>Dislike</button>
+      <button className='bg-gray-100 hover:bg-gray-400 p-5 rounded-md font-bold col-span-2' onClick={() => { done() }}>Submit</button>
     </div>
   </div>
 }
